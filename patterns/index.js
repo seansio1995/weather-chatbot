@@ -1,6 +1,6 @@
 const patterDict=[
 {
-  pattern:'\\b(Hi|Hello|Hey)\\b',
+  pattern:'\\b(?<greeting>Hi|Hello|Hey)\\b',
   intent:'Hello',
 },
 {
@@ -14,6 +14,10 @@ const patterDict=[
 {
   pattern:'\\b(thanks|thank you|appreciate)\\b',
   intent:'thank',
+},
+{
+  pattern:'like\\sin\\s\\b(?<city>.+)',
+  intent:"currentweather"
 }
 ];
 

@@ -9,6 +9,8 @@ const rl=Readline.createInterface({
 
 const matcher=require("./matcher");
 const weather=require("./weather");
+const {currentWeather}=require("./parser");
+const colors=require("colors");
 rl.setPrompt("> ");
 rl.prompt();
 rl.on("line",reply => {
@@ -19,7 +21,7 @@ rl.on("line",reply => {
         rl.prompt();
         break;
       case "Exit":
-        console.log("Bye Bye!!!");
+        console.log("Bye Bye!!!".blue.bold);
         process.exit(0);
         rl.prompt();
         break;
@@ -35,7 +37,8 @@ rl.on("line",reply => {
         console.log("Let me check.......");
         weather(data.entities.city,"current")
         .then(response=>{
-          console.log(response);
+          let parseResult=currentWeather(response);
+          console.log(parseResult);
           rl.prompt();
         })
         .catch(error=>{
